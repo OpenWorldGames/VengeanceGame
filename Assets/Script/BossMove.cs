@@ -3,7 +3,7 @@ using System.Collections;
 
 
 public class BossMove : MonoBehaviour {
-	public int moveSpeed = 4;  //per second 
+	public int moveSpeed = 5;  //per second 
 	Vector3 computerDirection = Vector3.down; 
 	Vector3 moveDirection = Vector3.zero; 
 	Vector3 newPosition = Vector3.zero; 
