@@ -8,16 +8,28 @@ public class Boundary
 }
 public class PlayerControl : MonoBehaviour {
 
+    public Boundary boundary;
+    public float tilt;
     public float speed;
-   // public Text countText;
-   // public Text winText;
+
+
+
+    // Public vars for guns
+    public GameObject shot;
+    public Transform shotSpawn;
+    public float fireRate;
+
+    private float nextFire;
+
+
+
+    // public Text countText;
+    // public Text winText;
 
     private Rigidbody rb;
     // private int count;
 
-    public Boundary boundary;
-
-    public float tilt;
+    
 
     void Start()
     {
@@ -26,7 +38,17 @@ public class PlayerControl : MonoBehaviour {
        // SetCountText();
        // winText.text = "";
     }
-  
+
+    void Update()
+    {
+        if (Input.GetButton("Fire1") && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+        }
+    }
+
+
     void FixedUpdate()
     {
         rb.velocity = Vector3.zero;
@@ -37,12 +59,12 @@ public class PlayerControl : MonoBehaviour {
 
         rb.AddForce(movement * speed);
 
-        rb.position = new Vector3
-            ( 
-            Mathf.Clamp(rb.position.x, boundary.xMin, boundary.xMax), 
-            Mathf.Clamp(rb.position.y, boundary.yMin, boundary.yMax), 
-            0.0f
-            );
+            rb.position = new Vector3
+                (
+                Mathf.Clamp(rb.position.x, boundary.xMin, boundary.xMax),  
+                Mathf.Clamp(rb.position.y, boundary.yMin, boundary.yMax),
+                0.0f
+                );
             
        
     }
