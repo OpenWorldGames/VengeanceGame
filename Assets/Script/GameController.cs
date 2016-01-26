@@ -49,9 +49,6 @@ public class GameController : MonoBehaviour
 	IEnumerator spawnWaves ()
     {    
 		yield return new WaitForSeconds (startTime);
-        while (true)
-        {
-
             for (int j= 0; j < waves; j++)
 		    {
 			loopCount++;
@@ -77,7 +74,6 @@ public class GameController : MonoBehaviour
                 restart = true;
                 break;
             }
-         }
            
 
           
@@ -97,6 +93,7 @@ public class GameController : MonoBehaviour
         //gameover
         public void GameOver()
     {
+		print ("Game Over!");
         gameOverText.text = "Game Over!";
         gameOver = true;
     }
