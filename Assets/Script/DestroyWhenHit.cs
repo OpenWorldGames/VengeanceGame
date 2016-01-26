@@ -6,8 +6,10 @@ public class DestroyWhenHit : MonoBehaviour
 {
     public GameObject explosion;
     public GameObject playerExplosion;
-	void OnTriggerEnter(Collider other) 
-	{
+    private GameController gameController;
+    void OnTriggerEnter(Collider other)
+    
+    {
 		if (other.tag == "Boundary")
 		{
 			return;
@@ -16,6 +18,7 @@ public class DestroyWhenHit : MonoBehaviour
         if(other.tag == "player")
         {
             Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
+            gameController.GameOver ();
         }
         Destroy(other.gameObject);
 		Destroy(gameObject);
