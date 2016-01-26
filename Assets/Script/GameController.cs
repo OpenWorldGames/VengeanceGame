@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour
 
     private bool gameOver;
     private bool restart;
-    //private int score;
+    private int score;
 
 	// Use this for initialization
 	void Start () {
@@ -29,8 +29,8 @@ public class GameController : MonoBehaviour
         restart = false;
         restartText.text = "";
         gameOverText.text = "";
-        //score = 0;
-        //UpdateScore();
+        score = 0;
+        UpdateScore();
         StartCoroutine (spawnWaves ());
 	}
 	
@@ -49,9 +49,6 @@ public class GameController : MonoBehaviour
 	IEnumerator spawnWaves ()
     {    
 		yield return new WaitForSeconds (startTime);
-        while (true)
-        {
-
             for (int j= 0; j < waves; j++)
 		    {
 			loopCount++;
@@ -77,13 +74,12 @@ public class GameController : MonoBehaviour
                 restart = true;
                 break;
             }
-         }
            
 
           
 		}
 	}
-        /*for score
+        //for score
         public void AddScore(int newScoreValue)
     {
         score += newScoreValue;
@@ -93,10 +89,11 @@ public class GameController : MonoBehaviour
         void UpdateScore()
     {
         scoreText.text = "Score: " + score;
-    }*/
+    }
         //gameover
         public void GameOver()
     {
+		print ("Game Over!");
         gameOverText.text = "Game Over!";
         gameOver = true;
     }
