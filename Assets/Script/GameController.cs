@@ -34,13 +34,13 @@ public class GameController : MonoBehaviour
         StartCoroutine (spawnWaves ());
 	}
 
-    void update ()
+    void Update ()
     {
         if (restart)
         {
             if (Input.GetKeyDown (KeyCode.R))
             {
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(0);
             }
         }
     }
