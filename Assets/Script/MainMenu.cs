@@ -20,7 +20,8 @@ public class MainMenu : MonoBehaviour {
         }
         public void ExitGame ()
         {
-            Application.Quit();
+		print ("Im Rich BItch!");
+			Application.Quit();
 
         }
 	
