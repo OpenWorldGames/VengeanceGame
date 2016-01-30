@@ -6,18 +6,31 @@ public class DestroyWhenHit : MonoBehaviour
 {
     public GameObject explosion;
     public GameObject playerExplosion;
-	void OnTriggerEnter(Collider other) 
+    private GameController gameController;
+
+
+	void Start()
 	{
+		gameController = GameObject.Find ("Game Controller").GetComponent<GameController>();
+	}
+    void OnTriggerEnter(Collider other)
+    
+    {
 		if (other.tag == "Boundary")
 		{
 			return;
 		}
-        Instantiate(explosion, transform.position,transform.rotation);
-        if(other.tag == "player")
-        {
-            Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
-        }
-        Destroy(other.gameObject);
+			
+		 else {
+		Instantiate(explosion, transform.position,transform.rotation);
+		Destroy(other.gameObject);
 		Destroy(gameObject);
+			print ("Hit!");
+			if (other.tag == "Player") {
+				gameController.GameOver ();
+			}
+				
+		}
+        
 	}
 }
