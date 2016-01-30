@@ -6,12 +6,22 @@ public class DestroyWhenHit : MonoBehaviour
 {
     public GameObject explosion;
     public GameObject playerExplosion;
-    private GameController gameController;
+	public int scoreValue;
+	private GameController gameController;
 
 
-	void Start()
+
+	void Start ()
 	{
-		gameController = GameObject.Find ("Game Controller").GetComponent<GameController>();
+		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
+		if (gameControllerObject != null)
+		{
+			gameController = gameControllerObject.GetComponent <GameController>();
+		}
+		if (gameController == null)
+		{
+			Debug.Log ("Cannot find 'GameController' script");
+		}
 	}
     void OnTriggerEnter(Collider other)
     
@@ -23,6 +33,7 @@ public class DestroyWhenHit : MonoBehaviour
 			
 		 else {
 		Instantiate(explosion, transform.position,transform.rotation);
+		gameController.AddScore (scoreValue);
 		Destroy(other.gameObject);
 		Destroy(gameObject);
 			print ("Hit!");
