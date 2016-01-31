@@ -15,13 +15,13 @@ public class GameController : MonoBehaviour
 	public float startTime;
 	public float waitTime;
 
-    public GUIText scoreText;
+    //public GUIText scoreText;
     public GUIText restartText;
     public GUIText gameOverText;
 
     private bool gameOver;
     private bool restart;
-    //private int score;
+    private int score;
 
 	// Use this for initialization
 	void Start () {
@@ -29,12 +29,12 @@ public class GameController : MonoBehaviour
         restart = false;
         restartText.text = "";
         gameOverText.text = "";
-        //score = 0;
-        //UpdateScore();
+       // score = 0;
+       // UpdateScore();
         StartCoroutine (spawnWaves ());
 	}
-	
-    void update ()
+
+    void Update ()
     {
         if (restart)
         {
@@ -47,23 +47,17 @@ public class GameController : MonoBehaviour
     
     //Spawn enemies in waves
 	IEnumerator spawnWaves ()
-    {    
+	{    
 		yield return new WaitForSeconds (startTime);
-        while (true)
-        {
-
-            for (int j= 0; j < waves; j++)
-		    {
+		for (int j = 0; j < waves; j++) {
 			loopCount++;
-			if (loopCount == waves)
-            {
+			if (loopCount == waves) {
 				Vector3 spawnPosition = new Vector3 (0, 8, 0);
 				Quaternion spawnRotation = Quaternion.identity;
 				Instantiate (boss, spawnPosition, spawnRotation);
 			}
         
-                for (int i = 0; i < numEnemies; i++)
-            {
+			for (int i = 0; i < numEnemies; i++) {
 				Vector3 spawnPosition = new Vector3 (Random.Range (-7, 11), Random.Range (5, 8), spawnValues.z);
 				Quaternion spawnRotation = Quaternion.identity;
 				Instantiate (enemy, spawnPosition, spawnRotation);
@@ -71,19 +65,15 @@ public class GameController : MonoBehaviour
 			}
 			yield return new WaitForSeconds (waitTime);
 
-                if (gameOver)
-            {
-                restartText.text = "Press 'R' to Restart";
-                restart = true;
-                break;
-            }
-         }
+
+
            
 
           
+
 		}
 	}
-        /*for score
+        /*//for score
         public void AddScore(int newScoreValue)
     {
         score += newScoreValue;
@@ -92,14 +82,23 @@ public class GameController : MonoBehaviour
         //updates score
         void UpdateScore()
     {
-        scoreText.text = "Score: " + score;
-    }*/
+        scoreText.text = "Score: " + score;*/
+    //}
         //gameover
         public void GameOver()
     {
+		print ("Game Over!");
         gameOverText.text = "Game Over!";
         gameOver = true;
+		Restart ();
     }
 
+	public void Restart()
+	{
+			print ("hi");
+			restartText.text = "Press 'R' to Restart";
+			restart = true;
+			
+	}
 }
 	
