@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     //public GUIText scoreText;
     public GUIText restartText;
     public GUIText gameOverText;
+	public GUIText scoreText;
 
     private bool gameOver;
     private bool restart;
@@ -29,8 +30,8 @@ public class GameController : MonoBehaviour
         restart = false;
         restartText.text = "";
         gameOverText.text = "";
-       // score = 0;
-       // UpdateScore();
+		score = 0;
+       	UpdateScore();
         StartCoroutine (spawnWaves ());
 	}
 
@@ -73,7 +74,7 @@ public class GameController : MonoBehaviour
 
 		}
 	}
-        /*//for score
+        //for score
         public void AddScore(int newScoreValue)
     {
         score += newScoreValue;
@@ -82,8 +83,8 @@ public class GameController : MonoBehaviour
         //updates score
         void UpdateScore()
     {
-        scoreText.text = "Score: " + score;*/
-    //}
+        scoreText.text = "Score: " + score;
+    }
         //gameover
         public void GameOver()
     {

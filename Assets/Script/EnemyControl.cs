@@ -11,13 +11,6 @@ public class EnemyControl : MonoBehaviour {
     public GameObject shot;
     public Transform shotSpawn;
     
-    
-
-    
-
-
-
-
 
     private Rigidbody rb;
     // private int count;
