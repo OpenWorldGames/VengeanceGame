@@ -10,7 +10,7 @@ public class EnemyControl : MonoBehaviour {
     // Public vars for guns
     public GameObject shot;
     public Transform shotSpawn;
-	public float fireRate;
+    
 
     private Rigidbody rb;
     // private int count;
@@ -28,9 +28,7 @@ public class EnemyControl : MonoBehaviour {
     void Update()
     {
         Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-		//Destroy(gameObject, lifetime);
-	}
+    }
 
   
-
 }
