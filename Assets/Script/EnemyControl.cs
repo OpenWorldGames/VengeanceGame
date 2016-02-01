@@ -10,7 +10,9 @@ public class EnemyControl : MonoBehaviour {
     // Public vars for guns
     public GameObject shot;
     public Transform shotSpawn;
-    
+	public float timer;
+
+	private int waitingTime;
 
     private Rigidbody rb;
     // private int count;
@@ -26,9 +28,13 @@ public class EnemyControl : MonoBehaviour {
     }
 
     void Update()
-    {
-        Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-    }
-
+	{
+		print ("fuck");
+		timer += Time.deltaTime;
+		if (timer > waitingTime) {
+			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+			timer = 0;
+		}
+	}
   
 }
