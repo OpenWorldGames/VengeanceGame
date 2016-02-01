@@ -53,7 +53,6 @@ public class EnemyControl : MonoBehaviour {
 		if (Time.time >= fireTime + fireInterval) 
 		{
 			// Instantiate bullet
-			Debug.Log("pew");
 			fireTime = Time.time; // Reset the timer.
 			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
 		}
