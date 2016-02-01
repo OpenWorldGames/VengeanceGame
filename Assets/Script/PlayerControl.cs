@@ -11,7 +11,8 @@ public class PlayerControl : MonoBehaviour {
     public Boundary boundary;
     public float tilt;
     public float speed;
-
+	public EnergyControl energyControl;
+	public bool energyfull = true;
 
 
     // Public vars for guns
@@ -37,15 +38,26 @@ public class PlayerControl : MonoBehaviour {
        // count = 0;
        // SetCountText();
        // winText.text = "";
+		GameObject energyControlObject = GameObject.FindWithTag ("Player");
+		if (energyControlObject != null)
+		{
+			energyControl = energyControlObject.GetComponent <EnergyControl>();
+		}
+		if (energyControl == null)
+		{
+			Debug.Log ("Cannot find 'EnergyControl' script");
+		}
     }
 
     void Update()
     {
-        if (Input.GetButton("Fire1") && Time.time > nextFire)
+        if (Input.GetButton("Fire1") && Time.time > nextFire && energyfull)
         {
             nextFire = Time.time + fireRate;
             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
 			GetComponent<AudioSource>().Play ();
+			energyControl.energy -=7;
+
         }
     }
 
