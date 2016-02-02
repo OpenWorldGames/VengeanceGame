@@ -33,6 +33,7 @@ public class DestroyWhenHit : MonoBehaviour
 			Debug.Log ("Cannot find 'PlayerHealth' script");
 		}
 	}
+
     void OnTriggerEnter(Collider other)
     
     {
