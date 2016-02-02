@@ -28,7 +28,7 @@ public class EnergyControl : MonoBehaviour {
 	}
 	void AddEnergy(float energyRegen = 5.2f)
 	{
-		if (energy + energyRegen > 100.0f) {
+		if (energy + energyRegen * Time.deltaTime > 100.0f) {
 			energy = 100.0f;
 		} else {
 			energy += energyRegen * Time.deltaTime;
@@ -37,7 +37,7 @@ public class EnergyControl : MonoBehaviour {
 	void CheckEnergy()
 	{
 		energyBar.rectTransform.localScale = new Vector3 (energy / 100, energyBar.rectTransform.localScale.y, energyBar.rectTransform.localScale.z);
-		if (energy <= 5.0f) {
+		if (energy <= 7.0f) {
 			playerControl.energyfull = false;
 
 			//disable shooting

@@ -11,7 +11,6 @@ public class DestroyWhenHit : MonoBehaviour
 	public int scoreValue;
 
 
-
 	void Start()
 	{
 		GameObject gameControllerObject = GameObject.FindWithTag ("GameController");
@@ -42,9 +41,9 @@ public class DestroyWhenHit : MonoBehaviour
 			return;
 		}
 			
-		 else {
-		Instantiate(explosion, transform.position,transform.rotation);
-		Destroy(gameObject);
+		else {
+			Instantiate(explosion, transform.position,transform.rotation);
+			Destroy(gameObject);
 			print ("Hit!");
 			if (other.tag == "Player")
 			{
@@ -64,13 +63,13 @@ public class DestroyWhenHit : MonoBehaviour
 					gameController.GameOver ();
 				}
 			} 
-				else 
+			else 
 			{
 				Destroy(other.gameObject);
 				gameController.AddScore (scoreValue);
 			}
-				
+
 		}
-        
+
 	}
 }

@@ -35,9 +35,7 @@ public class PlayerControl : MonoBehaviour {
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-       // count = 0;
-       // SetCountText();
-       // winText.text = "";
+
 		GameObject energyControlObject = GameObject.FindWithTag ("Player");
 		if (energyControlObject != null)
 		{
@@ -47,17 +45,19 @@ public class PlayerControl : MonoBehaviour {
 		{
 			Debug.Log ("Cannot find 'EnergyControl' script");
 		}
+       // count = 0;
+       // SetCountText();
+       // winText.text = "";
     }
 
     void Update()
     {
-        if (Input.GetButton("Fire1") && Time.time > nextFire && energyfull)
+		if (Input.GetButton("Fire1") && Time.time > nextFire && energyfull)
         {
             nextFire = Time.time + fireRate;
             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
 			GetComponent<AudioSource>().Play ();
 			energyControl.energy -=7;
-
         }
     }
 
