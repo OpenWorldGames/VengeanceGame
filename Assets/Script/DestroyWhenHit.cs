@@ -34,7 +34,7 @@ public class DestroyWhenHit : MonoBehaviour
 		gameController.AddScore (scoreValue);
 		Destroy(other.gameObject);
 		Destroy(gameObject);
-			print ("Hit!");
+		print ("Hit!");
 			if (other.tag == "Player") {
 				gameController.GameOver ();
 			}
