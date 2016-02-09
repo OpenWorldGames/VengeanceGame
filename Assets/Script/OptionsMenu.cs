@@ -4,7 +4,15 @@ using UnityEngine.SceneManagement;
 
 public class OptionsMenu : MonoBehaviour {
 
-    public void LoadScene(int level)
+	void Update ()
+	{
+		if (Input.GetKeyDown (KeyCode.P))
+		{
+			SceneManager.LoadScene(1);
+		}
+	}
+
+	public void LoadScene(int level)
     {
         
        SceneManager.LoadScene(level);
