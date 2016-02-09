@@ -44,10 +44,7 @@ public class GameController : MonoBehaviour
                 SceneManager.LoadScene(1);
             }
         }
-		if (Input.GetKeyDown (KeyCode.P))
-		{
-			SceneManager.LoadScene(2);
-		}
+
 	}
     
     //Spawn enemies in waves
