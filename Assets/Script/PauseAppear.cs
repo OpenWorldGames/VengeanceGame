@@ -8,7 +8,7 @@ public class PauseAppear : MonoBehaviour {
 	public bool isPaused;
 
 	void Start() {
-	isPaused = false;
+	isPaused = false;//game starts unpaused
 }
 
 // Update is called once per frame
@@ -25,7 +25,7 @@ public class PauseAppear : MonoBehaviour {
 	}
 
 
-	void PauseGame (bool state){
+	void PauseGame (bool state){ //pause game function
 			if (state) {
 
 				Time.timeScale = 0; //paused
@@ -36,7 +36,7 @@ public class PauseAppear : MonoBehaviour {
 			pausePanel.SetActive (state);
 		}
 
-	public void SwitchPause(){
+	public void SwitchPause(){ 
 			if (isPaused) {
 				isPaused = false; //Changes value
 			} else {
