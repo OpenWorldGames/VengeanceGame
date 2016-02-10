@@ -1,26 +1,46 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PauseAppear : MonoBehaviour 
-{
+public class PauseAppear : MonoBehaviour {
 
+	public GameObject pausePanel;
 
-	private bool isShowing;
+	public bool isPaused;
 
-	// Update is called once per frame
-	void Update ()
-	{
-		if (Input.GetKeyDown(KeyCode.P))
-		{
-			if (Time.timeScale == 1)
-			{
-				Time.timeScale = 0;
-			}
-			else
-			{
-				Time.timeScale = 1;
-			}
+	void Start() {
+	isPaused = false;
+}
+
+// Update is called once per frame
+	void Update () {
+		if (isPaused) {
+			PauseGame (true);
+		} else {
+			PauseGame (false);
 		}
-	
+
+		if (Input.GetKeyDown (KeyCode.Escape)) { //gets pause keypress
+			SwitchPause();
+		}
 	}
+
+
+	void PauseGame (bool state){
+			if (state) {
+
+				Time.timeScale = 0; //paused
+			}
+			else {
+				Time.timeScale = 1; //Unpaused
+			}
+			pausePanel.SetActive (state);
+		}
+
+	public void SwitchPause(){
+			if (isPaused) {
+				isPaused = false; //Changes value
+			} else {
+				isPaused = true;
+			}
+	}	
 }
