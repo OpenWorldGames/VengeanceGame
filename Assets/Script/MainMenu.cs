@@ -7,8 +7,7 @@ public class MainMenu : MonoBehaviour {
 
     public GameObject LoadingImage;
 
-    public void LoadScene(int level)
-    {
+    public void LoadScene(int level) {
         LoadingImage.SetActive(true);
       SceneManager.LoadScene(level);
 
