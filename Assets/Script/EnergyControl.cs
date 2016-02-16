@@ -23,7 +23,7 @@ public class EnergyControl : MonoBehaviour {
 	void Update () {
 		CheckEnergy ();
 		AddEnergy ();
-		print (energy);
+		//print (energy);
 
 	}
 	void AddEnergy(float energyRegen = 5.2f)

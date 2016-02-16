@@ -44,7 +44,8 @@ public class GameController : MonoBehaviour
                 SceneManager.LoadScene(1);
             }
         }
-    }
+
+	}
     
     //Spawn enemies in waves
 	IEnumerator spawnWaves ()

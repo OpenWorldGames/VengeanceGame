@@ -24,3 +24,6 @@ ExportedObj/
 
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
+Assets/Scenes/Stage_1.unity
+Assets/Scenes/options.unity.meta
+Assets/Scenes/Main.unity.meta

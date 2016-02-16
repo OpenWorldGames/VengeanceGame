@@ -1,31 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
+    public Transform mainMenu, optionsMenu;
 
-	
-        public string startLevel;
+    public GameObject LoadingImage;
 
-        public string levelSelect;
+    public void LoadScene(int level) {
+        LoadingImage.SetActive(true);
+      SceneManager.LoadScene(level);
 
-        public void NewGame ()
-        {
-            Application.LoadLevel(startLevel);
-
-        }
-        public void LevelSelect ()
-        {
-          Application.LoadLevel(levelSelect);
-
-        }
-        public void ExitGame ()
-        {
-		print ("Im Rich BItch!");
-			Application.Quit();
-
-        }
-	
-	
-	
+    }
 	
 }

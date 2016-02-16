@@ -28,8 +28,7 @@ public class BossHp : MonoBehaviour
         if (bossHp > 1)
         {
             bossHp -= 1;
-
-			Destroy(other.gameObject);
+            Destroy(other.gameObject);
             //player destroyed if hit boss above 1 hp and game over
             if (other.tag == "Player")
             {
