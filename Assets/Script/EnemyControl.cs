@@ -10,6 +10,7 @@ public class EnemyControl : MonoBehaviour {
    // Public vars for guns
     public GameObject shot;
     public Transform shotSpawn;
+	public Transform secondshot;
 	public float timer;
 
 	private int waitingTime;
@@ -55,6 +56,7 @@ public class EnemyControl : MonoBehaviour {
 			// Instantiate bullet
 			fireTime = Time.time; // Reset the timer.
 			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+			Instantiate (shot, secondshot.position, secondshot.rotation);
 		}
 	}
   

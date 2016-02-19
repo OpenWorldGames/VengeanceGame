@@ -20,11 +20,12 @@ public class BossHp : MonoBehaviour
 	public int bossHp = 5;
 	void OnTriggerEnter(Collider other) 
 	{
-		if (other.tag == "Boundary")
-		{
+		if (other.tag == "Boundary") {
+			return;
+		} else if (other.tag == "Shot") {
 			return;
 		}
-
+			
         if (bossHp > 1)
         {
             bossHp -= 1;
