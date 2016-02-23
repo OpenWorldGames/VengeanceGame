@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class PauseAppear : MonoBehaviour {
-
 	public GameObject pausePanel;
 
 	public bool isPaused;
