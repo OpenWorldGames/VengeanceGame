@@ -46,6 +46,10 @@ public class BossHp : MonoBehaviour
             gameController.AddScore(scoreValue);
             Destroy(other.gameObject);
             Destroy(gameObject);
+			print ("hi");
+
+			gameController.ShowPanel ("test");
+
             // player destroyed if hit boss 1 hp and game over
             if (other.tag == "Player")
             {

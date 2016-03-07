@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-
+	public GameObject StoryPanel;
 	public GameObject enemy;
 	public GameObject boss;
 	public Vector3 spawnValues;
@@ -33,6 +33,7 @@ public class GameController : MonoBehaviour
 		score = 0;
        	UpdateScore();
         StartCoroutine (spawnWaves ());
+		StoryPanel.SetActive (false);
 	}
 
     void Update ()
@@ -41,7 +42,7 @@ public class GameController : MonoBehaviour
         {
             if (Input.GetKeyDown (KeyCode.R))
             {
-                SceneManager.LoadScene(1);
+				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
 
@@ -101,6 +102,11 @@ public class GameController : MonoBehaviour
 			restartText.text = "Press 'R' to Restart";
 			restart = true;
 			
+	}
+
+	public void ShowPanel(string text){
+		print ("jnjk!");
+		StoryPanel.SetActive (true);
 	}
 }
 	
