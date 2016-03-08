@@ -34,7 +34,7 @@ public class BossHp : MonoBehaviour
             if (other.tag == "Player")
             {
                 print("hit!");
-                gameController.GameOver();
+                gameController.GameOver(true);
             }
             return;
 
@@ -53,7 +53,7 @@ public class BossHp : MonoBehaviour
             // player destroyed if hit boss 1 hp and game over
             if (other.tag == "Player")
             {
-                gameController.GameOver();
+                gameController.GameOver(true);
             }
             
         }

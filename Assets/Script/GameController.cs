@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+	public GameObject QuitPanel;
 	public GameObject StoryPanel;
 	public GameObject enemy;
 	public GameObject boss;
@@ -14,10 +15,11 @@ public class GameController : MonoBehaviour
 	public float spawnTime;
 	public float startTime;
 	public float waitTime;
+	private PauseAppear pauseAppear;
 
     //public GUIText scoreText;
-    public GUIText restartText;
-    public GUIText gameOverText;
+    //public GUIText restartText;
+    //public GUIText gameOverText;
 	public GUIText scoreText;
 
     private bool gameOver;
@@ -28,23 +30,24 @@ public class GameController : MonoBehaviour
 	void Start () {
         gameOver = false;
         restart = false;
-        restartText.text = "";
-        gameOverText.text = "";
+        //restartText.text = "";
+        //gameOverText.text = "";
 		score = 0;
        	UpdateScore();
         StartCoroutine (spawnWaves ());
 		StoryPanel.SetActive (false);
+		QuitPanel.SetActive (false);
 	}
 
     void Update ()
     {
-        if (restart)
-        {
-            if (Input.GetKeyDown (KeyCode.R))
-            {
-				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            }
-        }
+        //if (restart)
+       // {
+       //     if (Input.GetKeyDown (KeyCode.R))
+       //     {
+		//		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+       //     }
+       // }
 
 	}
     
@@ -88,19 +91,23 @@ public class GameController : MonoBehaviour
         scoreText.text = "Score: " + score;
     }
         //gameover
-        public void GameOver()
+	public void GameOver(bool state)
     {
+		Time.timeScale = 0; //paused
 		print ("Game Over!");
-        gameOverText.text = "Game Over!";
-        gameOver = true;
-		Restart ();
+		QuitPanel.SetActive (state);
+		//gameOverText.text = "Game Over!";
+        //gameOver = true;
+
+		//Restart ();
     }
 
 	public void Restart()
 	{
 			print ("hi");
-			restartText.text = "Press 'R' to Restart";
-			restart = true;
+			//restartText.text = "Press 'R' to Restart";
+			//restart = true;
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 			
 	}
 

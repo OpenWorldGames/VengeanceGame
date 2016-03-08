@@ -37,7 +37,7 @@ public class DestroyWhenHit : MonoBehaviour
 			Destroy(gameObject);
 			print ("Hit!");
 		if (other.tag == "Player") {
-				gameController.GameOver ();
+				gameController.GameOver (true);
 			}
 				
 		}

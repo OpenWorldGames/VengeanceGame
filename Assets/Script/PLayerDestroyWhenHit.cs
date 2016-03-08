@@ -36,7 +36,7 @@ public class PLayerDestroyWhenHit : MonoBehaviour {
 			Destroy(other.gameObject);
 			Destroy(gameObject);
 			print ("Hit!");
-			gameController.GameOver ();
+			gameController.GameOver (true);
 		
 		
 

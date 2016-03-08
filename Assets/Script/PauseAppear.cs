@@ -24,7 +24,7 @@ public class PauseAppear : MonoBehaviour {
 	}
 
 
-	void PauseGame (bool state){ //pause game function
+	public void PauseGame (bool state){ //pause game function
 			if (state) {
 
 				Time.timeScale = 0; //paused
