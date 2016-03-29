@@ -5,7 +5,6 @@ using System.Collections;
 public class DestroyWhenHit : MonoBehaviour
 {
     public GameObject explosion;
-   // public GameObject playerExplosion;
     private GameController gameController;
 	public int scoreValue;
 
@@ -26,11 +25,9 @@ public class DestroyWhenHit : MonoBehaviour
 
 		if (other.tag == "Boundary") {
 			return;
-		} 
-		else if (other.tag == "Shot") {
+		} else if (other.tag == "Shot") {
 			return;
-		}	
-		else {
+		} else {
 			Instantiate(explosion, transform.position,transform.rotation);
 			gameController.AddScore (scoreValue);
 			Destroy(other.gameObject);
