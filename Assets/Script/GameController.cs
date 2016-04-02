@@ -16,15 +16,18 @@ public class GameController : MonoBehaviour
 	public float startTime;
 	public float waitTime;
 	private PauseAppear pauseAppear;
+	public int highscore = 0;
+	private float gameTime;
+	private int combo;
 
     //public GUIText scoreText;
-    //public GUIText restartText;
-    //public GUIText gameOverText;
+    public GUIText comborestartText;
+    public GUIText comboText;
 	public GUIText scoreText;
 
     private bool gameOver;
     private bool restart;
-    private int score;
+	public int score;
 
 	// Use this for initialization
 	void Start () {
@@ -37,23 +40,16 @@ public class GameController : MonoBehaviour
         StartCoroutine (spawnWaves ());
 		StoryPanel.SetActive (false);
 		QuitPanel.SetActive (false);
+		Time.timeScale = 1; 
 	}
-
     void Update ()
     {
-        //if (restart)
-       // {
-       //     if (Input.GetKeyDown (KeyCode.R))
-       //     {
-		//		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-       //     }
-       // }
+		scoreSave ();
 
 	}
     
     //Spawn enemies in waves
-	IEnumerator spawnWaves ()
-	{    
+	IEnumerator spawnWaves () {    
 		yield return new WaitForSeconds (startTime);
 		for (int j = 0; j < waves; j++) {
 			loopCount++;
@@ -61,59 +57,63 @@ public class GameController : MonoBehaviour
 				Vector3 spawnPosition = new Vector3 (0, 8, 0);
 				Quaternion spawnRotation = Quaternion.identity;
 				Instantiate (boss, spawnPosition, spawnRotation);
-			}
-        
-			for (int i = 0; i < numEnemies; i++) {
+			} for (int i = 0; i < numEnemies; i++) {
 				Vector3 spawnPosition = new Vector3 (Random.Range (-7, 11), Random.Range (5, 8), spawnValues.z);
 				Quaternion spawnRotation = Quaternion.identity;
 				Instantiate (enemy, spawnPosition, spawnRotation);
 				yield return new WaitForSeconds (spawnTime);
 			}
 			yield return new WaitForSeconds (waitTime);
-
-
-
-           
-
-          
-
 		}
 	}
         //for score
         public void AddScore(int newScoreValue)
     {
-        score += newScoreValue;
-        UpdateScore();
+
+		if (gameTime <= 10) {
+			score += newScoreValue * combo;
+			combo++;
+			comboText.text = combo + "X Combo";
+			gameTime = 0;
+			print (gameTime);
+			UpdateScore ();
+		} else {
+			combo = 1; 
+			comborestartText.text = "combo reset" + combo;
+			gameTime = 0;
+			print (gameTime);
+			Destroy(gameObject);
+		}
+       
     }
         //updates score
         void UpdateScore()
     {
         scoreText.text = "Score: " + score;
+		scoreSave ();
+
     }
         //gameover
 	public void GameOver(bool state)
     {
-		Time.timeScale = 0; //paused
+		 //paused
 		print ("Game Over!");
 		QuitPanel.SetActive (state);
-		//gameOverText.text = "Game Over!";
-        //gameOver = true;
-
-		//Restart ();
+		pauseAppear.PauseGame (state);
     }
 
 	public void Restart()
 	{
-			print ("hi");
-			//restartText.text = "Press 'R' to Restart";
-			//restart = true;
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-			
 	}
 
 	public void ShowPanel(string text){
-		print ("jnjk!");
+		
 		StoryPanel.SetActive (true);
+	}
+	public void scoreSave()
+	{
+		
 	}
 }
 	
