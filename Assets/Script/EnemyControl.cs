@@ -9,10 +9,8 @@ public class EnemyControl : MonoBehaviour {
     
    // Public vars for guns
     public GameObject shot;
-    public Transform shotSpawn;
-	public Transform secondshot;
+	public Transform shotSpawn, shotSpawn2, shotSpawn3,shotSpawn4, shotSpawn5, shotSpawn6, shotSpawn7, shotSpawn8,shotSpawn9,shotSpawn10;
 	public float timer;
-
 	private int waitingTime;
 
 	[SerializeField]private float fireInterval = 0.25f;
@@ -51,13 +49,21 @@ public class EnemyControl : MonoBehaviour {
 
 	void FireShell()
 	{
-		if (Time.time >= fireTime + fireInterval) 
-		{
+		if (Time.time >= fireTime + fireInterval) {
 			// Instantiate bullet
 			fireTime = Time.time; // Reset the timer.
-			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-			Instantiate (shot, secondshot.position, secondshot.rotation);
+			Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+			Instantiate (shot, shotSpawn2.position, shotSpawn2.rotation);
+			Instantiate(shot, shotSpawn3.position, shotSpawn3.rotation);
+			Instantiate(shot, shotSpawn4.position, shotSpawn4.rotation);
+			Instantiate(shot, shotSpawn5.position, shotSpawn5.rotation);
+			Instantiate(shot, shotSpawn6.position, shotSpawn6.rotation);
+			Instantiate(shot, shotSpawn7.position, shotSpawn7.rotation);
+			Instantiate(shot, shotSpawn8.position, shotSpawn8.rotation);
+			Instantiate(shot, shotSpawn9.position, shotSpawn9.rotation);
+			Instantiate(shot, shotSpawn10.position, shotSpawn10.rotation);
 		}
+	
 	}
   
 
