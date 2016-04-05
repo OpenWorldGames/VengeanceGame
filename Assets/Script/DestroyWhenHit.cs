@@ -31,7 +31,8 @@ public class DestroyWhenHit : MonoBehaviour
 			Instantiate(explosion, transform.position,transform.rotation);
 			gameController.AddScore (scoreValue);
 			//Destroy(other.gameObject);
-			Destroy(gameObject);
+			Destroy(this.gameObject);
+			Destroy (GameObject.FindWithTag("Bullet"));
 			print ("Hit!");
 		}
 	}
