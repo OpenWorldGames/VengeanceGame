@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-	//public CharacterSelect;
 	public GameObject QuitPanel;
 	public GameObject StoryPanel;
 	public GameObject enemy;
@@ -20,7 +19,6 @@ public class GameController : MonoBehaviour
 	public int highscore = 0;
 	private float gameTime;
 	private int combo;
-	public GameObject[] ship; 
 
     //public GUIText scoreText;
     public GUIText comborestartText;
@@ -33,11 +31,7 @@ public class GameController : MonoBehaviour
 
 	// Use this for initialization
 	void Start () {
-		print (CharacterSelect.player1);
-		print (CharacterSelect.player2);
-		print (CharacterSelect.player3);
-		print (CharacterSelect.player4);
-		gameOver = false;
+        gameOver = false;
         restart = false;
         //restartText.text = "";
         //gameOverText.text = "";
@@ -51,7 +45,6 @@ public class GameController : MonoBehaviour
     void Update ()
     {
 		scoreSave ();
-
 
 	}
     
@@ -106,7 +99,7 @@ public class GameController : MonoBehaviour
 		 //paused
 		print ("Game Over!");
 		QuitPanel.SetActive (state);
-
+		pauseAppear.PauseGame (state);
     }
 
 	public void Restart()
@@ -121,18 +114,6 @@ public class GameController : MonoBehaviour
 	public void scoreSave()
 	{
 		
-	}
-
-	public void spawnPlayer(){
-		if (CharacterSelect.player1 == true) {
-			Instantiate (ship [0]);
-		} else if (CharacterSelect.player2 == true) {
-			Instantiate (ship [1]);
-		} else if (CharacterSelect.player3 == true) {
-			Instantiate (ship [2]);
-		} else if (CharacterSelect.player4 == true) {
-			Instantiate (ship [3]);
-		}
 	}
 }
 	
