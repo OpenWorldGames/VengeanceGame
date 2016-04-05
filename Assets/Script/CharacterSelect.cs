@@ -1,24 +1,17 @@
-﻿using UnityEngine;
+﻿﻿using UnityEngine;
 using System.Collections;
 
 public class CharacterSelect : MonoBehaviour {
 	public NextLevel nl;
-	public static bool player1;
-	public static bool player2;
-	public static bool player3;
-	public static bool player4;
+	public static bool player1= false;
+	public static bool player2= false;
+	public static bool player3= false;
+	public static bool player4= false;
 	// Use this for initialization
 	void Start () {
-		player1 = false;
-		player2 = false;
-		player3 = false;
-		player4 = false;
 		print (player1);
-		print (player2);
-		print (player3);
-		print (player4);
 	}
-	
+
 	// Update is called once per frame
 	public void onClick () {
 		player1 = true;
@@ -26,17 +19,17 @@ public class CharacterSelect : MonoBehaviour {
 		nl.nextLevel ();
 	}
 	public void onClick2 () {
-		player1 = true;
+		player2 = true;
 		print (player2);
 		nl.nextLevel ();
 	}
 	public void onClick3 () {
-		player1 = true;
+		player3 = true;
 		print (player3);
 		nl.nextLevel ();
 	}
 	public void onClick4 () {
-		player1 = true;
+		player4 = true;
 		print (player4);
 		nl.nextLevel ();
 	}
