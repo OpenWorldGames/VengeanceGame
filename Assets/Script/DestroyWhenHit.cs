@@ -30,9 +30,14 @@ public class DestroyWhenHit : MonoBehaviour
 		} else {
 			Instantiate(explosion, transform.position,transform.rotation);
 			gameController.AddScore (scoreValue);
-			//Destroy(other.gameObject);
+			Destroy(other.gameObject);
 			Destroy(gameObject);
 			print ("Hit!");
+		if (other.tag == "Player") {
+				gameController.GameOver (true);
+			}
+				
 		}
+        
 	}
 }
