@@ -3,8 +3,11 @@ using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
+	public GameObject Sparks;
 	public GameObject healthBar;
 	public int hp = 2;
+	public GameController gameController;
+	public GameObject explosion;
 
 	// Use this for initialization
 	void Start () {
@@ -21,5 +24,19 @@ public class PlayerHealth : MonoBehaviour
 	// Update is called once per frame
 	void Update () {
 	
+	}
+	public void deductH () {
+		if (hp > 1) {
+			hp -= 1;
+			print (hp);
+			Instantiate (Sparks, transform.position,transform.rotation);
+			DestroyImmediate (healthBar);
+		} else  {
+			print("player destroyed");
+			Destroy (gameObject);		
+			gameController.GameOver (true);
+			Instantiate(explosion, transform.position,transform.rotation);
+		}
+			
 	}
 }
