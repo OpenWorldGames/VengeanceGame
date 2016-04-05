@@ -8,6 +8,9 @@ public class GameController : MonoBehaviour
 	public GameObject QuitPanel;
 	public GameObject StoryPanel;
 	public GameObject enemy;
+	public GameObject enemy2;
+	public GameObject enemy3;
+	public GameObject enemy4;
 	public GameObject boss;
 	public Vector3 spawnValues;
 	public int waves;
