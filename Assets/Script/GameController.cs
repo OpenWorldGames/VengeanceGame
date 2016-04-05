@@ -52,6 +52,7 @@ public class GameController : MonoBehaviour
     {
 		scoreSave ();
 
+
 	}
     
     //Spawn enemies in waves
@@ -105,7 +106,7 @@ public class GameController : MonoBehaviour
 		 //paused
 		print ("Game Over!");
 		QuitPanel.SetActive (state);
-		pauseAppear.PauseGame (state);
+
     }
 
 	public void Restart()

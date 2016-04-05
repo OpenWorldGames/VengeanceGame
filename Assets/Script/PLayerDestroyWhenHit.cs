@@ -3,10 +3,11 @@ using System.Collections;
 
 public class PLayerDestroyWhenHit : MonoBehaviour {
 
-	public GameObject explosion;
+
+
 	private GameController gameController;
 	public int scoreValue;
-
+	public PlayerHealth PH;
 
 
 	void Start()
@@ -28,11 +29,12 @@ public class PLayerDestroyWhenHit : MonoBehaviour {
 		} else if (other.tag == "Bullet") {
 			return;
 		} else {
-			Instantiate(explosion, transform.position,transform.rotation);
-			Destroy(other.gameObject);
-			Destroy(gameObject);
+			
+			//Destroy(other.gameObject);
+			//Destroy(gameObject);
+			PH.deductH();
 			print ("Hit!");
-			gameController.GameOver (true);
+
 		}
 
 	}
