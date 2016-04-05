@@ -33,8 +33,6 @@ public class PLayerDestroyWhenHit : MonoBehaviour {
 			//Destroy(other.gameObject);
 			//Destroy(gameObject);
 			PH.deductH();
-			print ("Hit!");
-
 		}
 
 	}
