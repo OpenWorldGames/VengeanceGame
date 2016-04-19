@@ -28,11 +28,11 @@ public class BossMove : MonoBehaviour {
 				check = true;
 			}
 			if (check) {
-				print ("hit!3");
+				//print ("hit!3");
 				transform.Translate (Vector3.right * moveSpeed * Time.deltaTime);
 				rb.position = new Vector3 (Mathf.Clamp (rb.position.x, -8, 8), Mathf.Clamp (rb.position.y, -8, 8), 0.0f);
 			} else {
-				print ("hit!2");
+				//print ("hit!2");
 				transform.Translate (Vector3.left * moveSpeed * Time.deltaTime);
 				rb.position = new Vector3 (Mathf.Clamp (rb.position.x, -8, 8), Mathf.Clamp (rb.position.y, -8, 8), 0.0f);
 			}

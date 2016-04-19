@@ -30,13 +30,26 @@ public class PlayerHealth : MonoBehaviour
 			hp -= 1;
 			print (hp);
 			Instantiate (Sparks, transform.position,transform.rotation);
-			DestroyImmediate (healthBar);
+			string health = "healthBar" + (hp + 1) + "(Clone)"; print (health);
+
+			GameObject go = GameObject.Find (health);
+			if (go == null) {
+				print ("cannot find object" + health);
+			}
+
+			Destroy (go);
 		} else  {
 			print("player destroyed");
 			Destroy (gameObject);		
 			gameController.GameOver (true);
 			Instantiate(explosion, transform.position,transform.rotation);
+			string health = "healthBar" + (hp + 1) + "(Clone)"; print (health);
+
+			GameObject go = GameObject.Find (health);
+			if (go == null) {
+				print ("cannot find object" + health);
 		}
 			
+		}
 	}
 }

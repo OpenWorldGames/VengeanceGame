@@ -22,40 +22,59 @@ public class GameController : MonoBehaviour
 	private int combo;
 	public GameObject[] ship; 
 
-    //public GUIText scoreText;
-    public GUIText comborestartText;
-    public GUIText comboText;
+	//public GUIText scoreText;
+	public GUIText comborestartText;
+	public GUIText comboText;
 	public GUIText scoreText;
 
-    private bool gameOver;
-    private bool restart;
+	private bool gameOver;
+	private bool restart;
 	public int score;
+
 
 	// Use this for initialization
 	void Start () {
-		print (CharacterSelect.player1);
-		print (CharacterSelect.player2);
-		print (CharacterSelect.player3);
-		print (CharacterSelect.player4);
+		PlayerPrefs.SetInt ("Score", score);
+		if(PlayerPrefs.HasKey("Score")) {
+			print ("devour");
+			if (Application.loadedLevel == 3) {
+				PlayerPrefs.DeleteKey("Score");
+				score = 0;
+				print ("collect");
+			}
+		} else {
+			score = PlayerPrefs.GetInt("Score");
+			print ("remove");
+		}
+
+	//	print ("Player1" + CharacterSelect.player1);
+	//	print ("Player2" + CharacterSelect.player2);
+	//	print ("Player3" + CharacterSelect.player3);
+	//	print ("Player4" + CharacterSelect.player4);
+		spawnPlayer ();
+		DontDestroyOnLoad (ship[0]);
+		DontDestroyOnLoad (ship[1]);
+		DontDestroyOnLoad (ship[2]);
+		DontDestroyOnLoad (ship[3]);
 		gameOver = false;
-        restart = false;
-        //restartText.text = "";
-        //gameOverText.text = "";
+		restart = false;
+		//restartText.text = "";
+		//gameOverText.text = "";
 		score = 0;
-       	UpdateScore();
-        StartCoroutine (spawnWaves ());
+		UpdateScore();
+		StartCoroutine (spawnWaves ());
 		StoryPanel.SetActive (false);
 		QuitPanel.SetActive (false);
 		Time.timeScale = 1; 
 	}
-    void Update ()
-    {
+	void Update ()
+	{
 		scoreSave ();
 
 
 	}
-    
-    //Spawn enemies in waves
+
+	//Spawn enemies in waves
 	IEnumerator spawnWaves () {    
 		yield return new WaitForSeconds (startTime);
 		for (int j = 0; j < waves; j++) {
@@ -73,66 +92,70 @@ public class GameController : MonoBehaviour
 			yield return new WaitForSeconds (waitTime);
 		}
 	}
-        //for score
-        public void AddScore(int newScoreValue)
-    {
+	//for score
+	public void AddScore(int newScoreValue)
+	{
 
 		if (gameTime <= 10) {
 			score += newScoreValue * combo;
 			combo++;
 			comboText.text = combo + "X Combo";
 			gameTime = 0;
-			print (gameTime);
+			//print (gameTime);
 			UpdateScore ();
 		} else {
 			combo = 1; 
 			comborestartText.text = "combo reset" + combo;
 			gameTime = 0;
-			print (gameTime);
+			//print (gameTime);
 			Destroy(gameObject);
 		}
-       
-    }
-        //updates score
-        void UpdateScore()
-    {
-        scoreText.text = "Score: " + score;
+
+	}
+	//updates score
+	void UpdateScore()
+	{
+		scoreText.text = "score: " + score;
 		scoreSave ();
 
-    }
-        //gameover
+	}
+	//gameover
 	public void GameOver(bool state)
-    {
-		 //paused
+	{
+		//paused
 		print ("Game Over!");
 		QuitPanel.SetActive (state);
 
-    }
-
+	}
 	public void Restart()
 	{
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 
 	public void ShowPanel(string text){
-		
+
 		StoryPanel.SetActive (true);
 	}
 	public void scoreSave()
 	{
-		
+		//DontDestroyOnLoad (Score);
 	}
 
 	public void spawnPlayer(){
-		if (CharacterSelect.player1 == true) {
-			Instantiate (ship [0]);
-		} else if (CharacterSelect.player2 == true) {
-			Instantiate (ship [1]);
-		} else if (CharacterSelect.player3 == true) {
-			Instantiate (ship [2]);
-		} else if (CharacterSelect.player4 == true) {
-			Instantiate (ship [3]);
+		Vector3 playerPosition = new Vector3 (0, -3, 0);
+		if (CharacterSelect.player1) {
+			//print ("Player 1 ship");
+			Instantiate (ship [0], playerPosition, transform.rotation);
+		} else if (CharacterSelect.player2) {
+			//print ("Player 2 ship");
+			Instantiate (ship [1], playerPosition, transform.rotation);
+		} else if (CharacterSelect.player3) {
+			//print ("Player 3 ship");
+			Instantiate (ship [2], playerPosition, transform.rotation);
+		} else if (CharacterSelect.player4) {
+			//print ("Player 4 ship");
+			Instantiate (ship [3], playerPosition, transform.rotation);
 		}
+
 	}
 }
-	

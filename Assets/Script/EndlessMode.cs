@@ -3,6 +3,7 @@ using System.Collections;
 
 public class EndlessMode : MonoBehaviour {
 
+
 	public GameObject[] enemy;
 	public Vector3 spawnValues;
 	public int hazardCount;
@@ -13,6 +14,7 @@ public class EndlessMode : MonoBehaviour {
 	void Start ()
 	{
 		StartCoroutine (SpawnWaves ());
+
 	}
 
 	IEnumerator SpawnWaves ()
