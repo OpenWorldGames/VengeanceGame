@@ -9,7 +9,7 @@ public class EnemyControl : MonoBehaviour {
     
    // Public vars for guns
     public GameObject shot;
-	public Transform shotSpawn, shotSpawn2, shotSpawn3,shotSpawn4, shotSpawn5, shotSpawn6, shotSpawn7, shotSpawn8,shotSpawn9,shotSpawn10;
+	public Transform[] shotSpawn;
 	public float timer;
 	private int waitingTime;
 
@@ -52,16 +52,17 @@ public class EnemyControl : MonoBehaviour {
 		if (Time.time >= fireTime + fireInterval) {
 			// Instantiate bullet
 			fireTime = Time.time; // Reset the timer.
-			Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
-			Instantiate (shot, shotSpawn2.position, shotSpawn2.rotation);
-			Instantiate(shot, shotSpawn3.position, shotSpawn3.rotation);
-			Instantiate(shot, shotSpawn4.position, shotSpawn4.rotation);
-			Instantiate(shot, shotSpawn5.position, shotSpawn5.rotation);
-			Instantiate(shot, shotSpawn6.position, shotSpawn6.rotation);
-			Instantiate(shot, shotSpawn7.position, shotSpawn7.rotation);
-			Instantiate(shot, shotSpawn8.position, shotSpawn8.rotation);
-			Instantiate(shot, shotSpawn9.position, shotSpawn9.rotation);
-			Instantiate(shot, shotSpawn10.position, shotSpawn10.rotation);
+			Instantiate (shot, shotSpawn[0].position, shotSpawn[0].rotation);
+			Instantiate (shot, shotSpawn[1].position, shotSpawn[1].rotation);
+			Instantiate (shot, shotSpawn[2].position, shotSpawn[2].rotation);
+			Instantiate (shot, shotSpawn[3].position, shotSpawn[3].rotation);
+			Instantiate (shot, shotSpawn[4].position, shotSpawn[4].rotation);
+			Instantiate (shot, shotSpawn[5].position, shotSpawn[5].rotation);
+			Instantiate (shot, shotSpawn[6].position, shotSpawn[6].rotation);
+			Instantiate (shot, shotSpawn[7].position, shotSpawn[7].rotation);
+			Instantiate (shot, shotSpawn[8].position, shotSpawn[8].rotation);
+			Instantiate (shot, shotSpawn[9].position, shotSpawn[9].rotation);
+
 		}
 	
 	}

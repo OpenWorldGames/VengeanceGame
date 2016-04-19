@@ -31,12 +31,26 @@ public class GameController : MonoBehaviour
 	private bool restart;
 	public int score;
 
+
 	// Use this for initialization
 	void Start () {
-		print ("Player1" + CharacterSelect.player1);
-		print ("Player2" + CharacterSelect.player2);
-		print ("Player3" + CharacterSelect.player3);
-		print ("Player4" + CharacterSelect.player4);
+		PlayerPrefs.SetInt ("Score", score);
+		if(PlayerPrefs.HasKey("Score")) {
+			print ("devour");
+			if (Application.loadedLevel == 3) {
+				PlayerPrefs.DeleteKey("Score");
+				score = 0;
+				print ("collect");
+			}
+		} else {
+			score = PlayerPrefs.GetInt("Score");
+			print ("remove");
+		}
+
+	//	print ("Player1" + CharacterSelect.player1);
+	//	print ("Player2" + CharacterSelect.player2);
+	//	print ("Player3" + CharacterSelect.player3);
+	//	print ("Player4" + CharacterSelect.player4);
 		spawnPlayer ();
 		DontDestroyOnLoad (ship[0]);
 		DontDestroyOnLoad (ship[1]);
@@ -87,13 +101,13 @@ public class GameController : MonoBehaviour
 			combo++;
 			comboText.text = combo + "X Combo";
 			gameTime = 0;
-			print (gameTime);
+			//print (gameTime);
 			UpdateScore ();
 		} else {
 			combo = 1; 
 			comborestartText.text = "combo reset" + combo;
 			gameTime = 0;
-			print (gameTime);
+			//print (gameTime);
 			Destroy(gameObject);
 		}
 
@@ -101,7 +115,7 @@ public class GameController : MonoBehaviour
 	//updates score
 	void UpdateScore()
 	{
-		scoreText.text = "Score: " + score;
+		scoreText.text = "score: " + score;
 		scoreSave ();
 
 	}
@@ -113,7 +127,6 @@ public class GameController : MonoBehaviour
 		QuitPanel.SetActive (state);
 
 	}
-
 	public void Restart()
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -125,22 +138,22 @@ public class GameController : MonoBehaviour
 	}
 	public void scoreSave()
 	{
-
+		//DontDestroyOnLoad (Score);
 	}
 
 	public void spawnPlayer(){
 		Vector3 playerPosition = new Vector3 (0, -3, 0);
 		if (CharacterSelect.player1) {
-			print ("Player 1 ship");
+			//print ("Player 1 ship");
 			Instantiate (ship [0], playerPosition, transform.rotation);
 		} else if (CharacterSelect.player2) {
-			print ("Player 2 ship");
+			//print ("Player 2 ship");
 			Instantiate (ship [1], playerPosition, transform.rotation);
 		} else if (CharacterSelect.player3) {
-			print ("Player 3 ship");
+			//print ("Player 3 ship");
 			Instantiate (ship [2], playerPosition, transform.rotation);
 		} else if (CharacterSelect.player4) {
-			print ("Player 4 ship");
+			//print ("Player 4 ship");
 			Instantiate (ship [3], playerPosition, transform.rotation);
 		}
 

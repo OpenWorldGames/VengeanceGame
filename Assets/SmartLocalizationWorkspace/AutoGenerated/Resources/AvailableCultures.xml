@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SmartCultureCollections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <version>0</version>
+  <CultureInfos>
+    <CultureInfo>
+      <languageCode>zh-CN</languageCode>
+      <englishName>Chinese (China)</englishName>
+      <nativeName>中文 (中国)</nativeName>
+      <isRightToLeft>false</isRightToLeft>
+    </CultureInfo>
+    <CultureInfo>
+      <languageCode>fr-CA</languageCode>
+      <englishName>French (Canada)</englishName>
+      <nativeName>français (Canada)</nativeName>
+      <isRightToLeft>false</isRightToLeft>
+    </CultureInfo>
+    <CultureInfo>
+      <languageCode>en-CA</languageCode>
+      <englishName>English (Canada)</englishName>
+      <nativeName>English (Canada)</nativeName>
+      <isRightToLeft>false</isRightToLeft>
+    </CultureInfo>
+  </CultureInfos>
+</SmartCultureCollections>

@@ -4,7 +4,7 @@ using System.Collections;
 public class PLayerDestroyWhenHit : MonoBehaviour {
 
 
-
+	public int Highscore = 0;
 	private GameController gameController;
 	public int scoreValue;
 	public PlayerHealth PH;
